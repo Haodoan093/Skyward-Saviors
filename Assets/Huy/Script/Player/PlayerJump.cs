@@ -45,7 +45,7 @@ public class PlayerJump : HuyMonoBehaviour
 
     protected virtual void Jumping()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && this.isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) && this.isGrounded || Input.GetButtonDown("Jump") && this.isGrounded)
         {
             this.Jump();
             isJumping = true;
@@ -56,7 +56,7 @@ public class PlayerJump : HuyMonoBehaviour
         {
             this.playerCtrl.Rb.velocity -= this.vecGravity * fallMultiplier * Time.deltaTime;
         }
-        if (Input.GetKey(KeyCode.Space) && isJumping)
+        if (Input.GetButton("Jump") && isJumping)
         {
             if (this.jumpTimeCounter > 0)
             {
