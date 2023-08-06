@@ -216,9 +216,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 264746698}
-  - component: {fileID: 264746700}
   - component: {fileID: 264746699}
   - component: {fileID: 264746701}
+  - component: {fileID: 264746702}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -263,32 +263,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &264746700
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 264746697}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.015605241, y: -1.8264244}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.7658337, y: 1.5110499}
-  m_EdgeRadius: 0
 --- !u!114 &264746701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,11 +275,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19a5c4ec0bf128d428817055e7c17d05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
-  _HP: 0
-  _armor: 0
-  _damge: 0
-  _jumpForce: 400
+  _speed: 3
+  _HP: 100
+  _armor: 12
+  _damge: 15
+  _jumpForce: 330
+--- !u!70 &264746702
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264746697}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.03136307, y: -1.860869}
+  m_Size: {x: 0.6463605, y: 1.6272595}
+  m_Direction: 0
 --- !u!1 &303131889
 GameObject:
   m_ObjectHideFlags: 0
@@ -654,44 +644,14 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -8.995144, y: -2.05}
-  - {x: -6.8, y: -2.05}
-  - {x: -6.7967367, y: -2.2115717}
-  - {x: -6.6073623, y: -2.2135}
-  - {x: -6.606526, y: -2.3867986}
-  - {x: -6.4600973, y: -2.3818653}
-  - {x: -6.44434, y: -2.5732424}
-  - {x: -6.3076, y: -2.5815804}
-  - {x: -6.3082194, y: -2.741641}
-  - {x: -6.171671, y: -2.7354429}
-  - {x: -6.173032, y: -2.897516}
-  - {x: -6.0147934, y: -2.8947577}
-  - {x: -6.0188904, y: -3.0652144}
-  - {x: -3.782582, y: -3.0580308}
-  - {x: -3.7616491, y: -3.2302547}
-  - {x: -3.5868282, y: -3.2248306}
-  - {x: -3.582287, y: -3.3860607}
-  - {x: -3.4437568, y: -3.385022}
-  - {x: -3.435125, y: -3.555202}
-  - {x: -3.274902, y: -3.5575156}
-  - {x: -3.2877467, y: -3.7392168}
-  - {x: -3.139609, y: -3.7324152}
-  - {x: -3.140556, y: -3.8778992}
-  - {x: -3.0201633, y: -3.8765457}
-  - {x: -3.0198123, y: -4.08}
-  - {x: 6.0339727, y: -4.08}
-  - {x: 6.0450087, y: -3.8878999}
-  - {x: 6.1880407, y: -3.8895612}
-  - {x: 6.188619, y: -3.7512715}
-  - {x: 6.310378, y: -3.7470198}
-  - {x: 6.3130865, y: -3.6100483}
-  - {x: 6.4484715, y: -3.601234}
-  - {x: 6.4613504, y: -3.4146857}
-  - {x: 6.586868, y: -3.4109414}
-  - {x: 6.583537, y: -3.254068}
-  - {x: 6.769852, y: -3.259432}
-  - {x: 6.77566, y: -3.08}
-  - {x: 10.014061, y: -3.08}
+  - {x: -8.997567, y: -2.05}
+  - {x: -6.82, y: -2.05}
+  - {x: -6.0417495, y: -3.05}
+  - {x: -3.8328931, y: -3.05}
+  - {x: -2.9619327, y: -4.09}
+  - {x: 6.031194, y: -4.09}
+  - {x: 6.8653016, y: -3.08}
+  - {x: 9.980767, y: -3.08}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
