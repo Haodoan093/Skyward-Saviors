@@ -10,15 +10,28 @@ public class CharacterMovement : MonoBehaviour
     private bool canMove;
     private bool canJump;
     private bool isJumping;
+    public LayerMask layerMask;
 
     public Rigidbody2D Rigidbody { get => rb; set => rb = value; }
     public float JumpForce { get => jumpForce; set => jumpForce = value; }
     public bool CanJump { get => canJump; set => canJump = value; }
 
+    public bool OnGround
+    {
+        get
+        {
+            var bounds = charCtrl.Collider.bounds;
+            return Physics2D.OverlapCapsule(new Vector2(bounds.center.x, bounds.min.y),
+            new Vector2(bounds.size.x, 0.1f),
+            CapsuleDirection2D.Horizontal, 0, layerMask);
+        }
+    }
+
     private void Awake()
     {
         canMove = true;
         CanJump = true;
+        layerMask = LayerMask.GetMask("Ground");
         charCtrl = transform.parent.GetComponent<CharacterController>();
         rb = charCtrl.GetComponent<Rigidbody2D>();
     }
@@ -28,6 +41,7 @@ public class CharacterMovement : MonoBehaviour
         var direction = Input.GetAxisRaw("Horizontal");
         Move(direction);
         FlipX(direction);
+        Debug.Log($"on ground: {OnGround}");
     }
 
     private void Move(float direction)
