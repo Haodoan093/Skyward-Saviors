@@ -13943,8 +13943,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  jumpForce: 14
+  jumpForce: 500
   charCtrl: {fileID: 0}
+  rb: {fileID: 0}
 --- !u!1 &1774490591
 GameObject:
   m_ObjectHideFlags: 0
@@ -14540,7 +14541,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57e50bb804eef2d47b972d94f2bc7d6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   sprite: {fileID: 0}
+  movement: {fileID: 0}
+  model: {fileID: 0}
 --- !u!1 &2102116720
 GameObject:
   m_ObjectHideFlags: 0
