@@ -21,7 +21,6 @@ public class RollState : CharacterStateMachine
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         charCtrl.Animator.SetInteger("State", (int)CharacterState.Idle);
-        movement.Stop();
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

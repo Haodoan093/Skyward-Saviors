@@ -13,7 +13,6 @@ public class RunState : CharacterStateMachine
         float direction = Input.GetAxisRaw("Horizontal");
         if (direction == 0)
             state = CharacterState.Idle;
-        movement.Move(direction);
         Roll();
         Jump();
         Fall();

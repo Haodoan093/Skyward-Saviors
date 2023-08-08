@@ -45,13 +45,14 @@ public class CharacterMovement : MonoBehaviour
     {
         var dir = Input.GetAxisRaw("Horizontal");
         if (dir != 0) direction = dir;
+        Move(dir);
         FlipX(direction);
     }
 
 
     public void Move(float dir)
     {
-        if (!CanMove || !OnGround) return;
+        if (!CanMove || (!OnGround && dir == 0)) return;
         rb.velocity = new Vector2(dir * moveSpeed, rb.velocity.y);
     }
 
