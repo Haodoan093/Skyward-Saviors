@@ -10,17 +10,18 @@ public class RollState : CharacterStateMachine
     {
         base.OnStateEnter(animator, animatorStateInfo, layerIndex);
         movement.Rigidbody.velocity = new Vector2(7 * movement.Direction, movement.Rigidbody.velocity.y);
+        movement.IsRolling = true;
     }
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         charCtrl.Animator.SetInteger("State", (int)CharacterState.Idle);
+        movement.IsRolling = false;
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

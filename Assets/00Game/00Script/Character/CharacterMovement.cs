@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float moveSpeed = 4f;
     [SerializeField] private float jumpForce = 12f;
     [SerializeField] private CharacterController charCtrl;
 
@@ -10,6 +10,7 @@ public class CharacterMovement : MonoBehaviour
     private bool canMove;
     private bool canJump;
     private float direction = 1;
+    private bool isRolling;
     private bool isJumping;
     public LayerMask layerMask;
 
@@ -31,6 +32,7 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
+    public bool IsRolling { get => isRolling; set => isRolling = value; }
 
     private void Awake()
     {
@@ -52,7 +54,7 @@ public class CharacterMovement : MonoBehaviour
 
     public void Move(float dir)
     {
-        if (!CanMove || (!OnGround && dir == 0)) return;
+        if (!CanMove || (!OnGround && dir == 0) || isRolling) return;
         rb.velocity = new Vector2(dir * moveSpeed, rb.velocity.y);
     }
 
