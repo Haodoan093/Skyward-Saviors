@@ -11,8 +11,11 @@ public class CharacterStateMachine : StateMachineBehaviour
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        charCtrl = animator.transform.parent.GetComponent<CharacterController>();
-        movement = charCtrl.Movement;
+        if (!charCtrl)
+        {
+            charCtrl = animator.transform.parent.GetComponent<CharacterController>();
+            movement = charCtrl.Movement;
+        }
         state = (CharacterState)charCtrl.Animator.GetInteger("State");
     }
 

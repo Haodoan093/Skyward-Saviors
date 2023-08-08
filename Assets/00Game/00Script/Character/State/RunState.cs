@@ -13,8 +13,7 @@ public class RunState : CharacterStateMachine
         float direction = Input.GetAxisRaw("Horizontal");
         if (direction == 0)
             state = CharacterState.Idle;
-        else
-            movement.Move(direction);
+        movement.Move(direction);
         Roll();
         Jump();
         Fall();
@@ -24,7 +23,7 @@ public class RunState : CharacterStateMachine
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        movement.Stop();
+
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

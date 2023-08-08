@@ -3,7 +3,7 @@ using UnityEngine;
 public class CharacterMovement : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float jumpForce = 500f;
+    [SerializeField] private float jumpForce = 12f;
     [SerializeField] private CharacterController charCtrl;
 
     public Rigidbody2D rb;
@@ -51,20 +51,18 @@ public class CharacterMovement : MonoBehaviour
 
     public void Move(float dir)
     {
-        if (!CanMove || dir == 0) return;
-        var velocity = rb.velocity;
-        rb.velocity = new Vector2(dir * moveSpeed, velocity.y);
+        if (!CanMove || !OnGround) return;
+        rb.velocity = new Vector2(dir * moveSpeed, rb.velocity.y);
     }
 
     public void Stop()
     {
-        var velocity = rb.velocity;
-        rb.velocity = new Vector2(0, velocity.y);
+        rb.velocity = new Vector2(0, rb.velocity.y);
     }
 
     public void Jump(float force)
     {
-        rb.AddForce(new Vector2(0, force));
+        rb.velocity = new Vector2(rb.velocity.x, force);
     }
 
     private void FlipX(float dir)

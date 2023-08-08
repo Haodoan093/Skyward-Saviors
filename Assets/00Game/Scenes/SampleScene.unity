@@ -14150,7 +14150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  jumpForce: 500
+  jumpForce: 12
   charCtrl: {fileID: 0}
   rb: {fileID: 0}
   layerMask:
