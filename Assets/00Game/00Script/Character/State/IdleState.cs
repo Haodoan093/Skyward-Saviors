@@ -9,6 +9,7 @@ public class IdleState : CharacterStateMachine
     {
         Run();
         Jump();
+        Defend();
         Roll();
         Fall();
         charCtrl.Animator.SetInteger("State", (int)state);

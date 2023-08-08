@@ -57,10 +57,21 @@ public class CharacterStateMachine : StateMachineBehaviour
     }
     virtual public void Roll()
     {
-        if (Input.GetAxisRaw("Vertical") == -1)
+        if (Input.GetKeyDown(KeyCode.K))
         {
             state = CharacterState.Roll;
         }
+    }
+    virtual public void Defend()
+    {
+        if (Input.GetAxisRaw("Vertical") == -1)
+        {
+            state = CharacterState.Defend;
+        }
+    }
+    virtual public void Idle()
+    {
+        charCtrl.Animator.SetInteger("State", (int)CharacterState.Idle);
     }
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
