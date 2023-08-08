@@ -9,12 +9,16 @@ public class CharacterMovement : MonoBehaviour
     public Rigidbody2D rb;
     private bool canMove;
     private bool canJump;
+    private float direction = 1;
     private bool isJumping;
     public LayerMask layerMask;
+
 
     public Rigidbody2D Rigidbody { get => rb; set => rb = value; }
     public float JumpForce { get => jumpForce; set => jumpForce = value; }
     public bool CanJump { get => canJump; set => canJump = value; }
+    public float Direction { get => direction; set => direction = value; }
+    public bool CanMove { get => canMove; set => canMove = value; }
 
     public bool OnGround
     {
@@ -27,9 +31,10 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
+
     private void Awake()
     {
-        canMove = true;
+        CanMove = true;
         CanJump = true;
         layerMask = LayerMask.GetMask("Ground");
         charCtrl = transform.parent.GetComponent<CharacterController>();
@@ -38,34 +43,37 @@ public class CharacterMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        var direction = Input.GetAxisRaw("Horizontal");
-        Move(direction);
+        var dir = Input.GetAxisRaw("Horizontal");
+        if (dir != 0) direction = dir;
         FlipX(direction);
-        Debug.Log($"on ground: {OnGround}");
     }
 
-    private void Move(float direction)
+
+    public void Move(float dir)
     {
-        if (!canMove) return;
+        if (!CanMove || dir == 0) return;
         var velocity = rb.velocity;
-        rb.velocity = new Vector2(direction * moveSpeed, velocity.y);
+        rb.velocity = new Vector2(dir * moveSpeed, velocity.y);
+    }
+
+    public void Stop()
+    {
+        var velocity = rb.velocity;
+        rb.velocity = new Vector2(0, velocity.y);
     }
 
     public void Jump(float force)
     {
         rb.AddForce(new Vector2(0, force));
-
     }
 
-    private void FlipX(float direction)
+    private void FlipX(float dir)
     {
-        if (direction != 0)
+        if (dir != 0)
         {
             var model = charCtrl.Model;
             var localScale = model.localScale;
-            model.localScale = new Vector3(Mathf.Abs(localScale.x) * direction, localScale.y, localScale.z);
+            model.localScale = new Vector3(Mathf.Abs(localScale.x) * dir, localScale.y, localScale.z);
         }
     }
-
-
 }

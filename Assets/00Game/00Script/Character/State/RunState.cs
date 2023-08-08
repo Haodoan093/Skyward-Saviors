@@ -10,10 +10,12 @@ public class RunState : CharacterStateMachine
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (Input.GetAxisRaw("Horizontal") == 0)
-        {
+        float direction = Input.GetAxisRaw("Horizontal");
+        if (direction == 0)
             state = CharacterState.Idle;
-        }
+        else
+            movement.Move(direction);
+        Roll();
         Jump();
         Fall();
         charCtrl.Animator.SetInteger("State", (int)state);
@@ -22,7 +24,7 @@ public class RunState : CharacterStateMachine
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
+        movement.Stop();
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

@@ -52,6 +52,13 @@ public class CharacterStateMachine : StateMachineBehaviour
             state = CharacterState.Fall;
         }
     }
+    virtual public void Roll()
+    {
+        if (Input.GetAxisRaw("Vertical") == -1)
+        {
+            state = CharacterState.Roll;
+        }
+    }
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{

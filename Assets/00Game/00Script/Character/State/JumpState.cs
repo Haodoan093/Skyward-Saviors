@@ -12,8 +12,6 @@ public class JumpState : CharacterStateMachine
     {
         Fall();
         charCtrl.Animator.SetInteger("State", (int)state);
-
-        
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
