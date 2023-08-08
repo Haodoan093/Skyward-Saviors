@@ -10,10 +10,7 @@ public class JumpState : CharacterStateMachine
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (movement.Rigidbody.velocity.y < -0.01f)
-        {
-            state = CharacterState.Fall;
-        }
+        Fall();
         charCtrl.Animator.SetInteger("State", (int)state);
 
         

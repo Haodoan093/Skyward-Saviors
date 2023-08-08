@@ -7,20 +7,9 @@ public class IdleState : CharacterStateMachine
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (Input.GetAxisRaw("Horizontal") != 0)
-        {
-            state = CharacterState.Run;
-        }
-        if (Input.GetButtonDown("Jump") && movement.CanJump)
-        {
-            movement.Jump(movement.JumpForce);
-            state = CharacterState.Jump;
-        }
-
-        if (movement.Rigidbody.velocity.y < -0.01f)
-        {
-            state = CharacterState.Fall;
-        }
+        Run();
+        Jump();
+        Fall();
         charCtrl.Animator.SetInteger("State", (int)state);
 
 

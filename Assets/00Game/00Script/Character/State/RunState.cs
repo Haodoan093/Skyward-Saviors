@@ -14,16 +14,8 @@ public class RunState : CharacterStateMachine
         {
             state = CharacterState.Idle;
         }
-        if (Input.GetButtonDown("Jump") && movement.CanJump)
-        {
-            movement.Jump(movement.JumpForce);
-            state = CharacterState.Jump;
-        }
-
-        if (movement.Rigidbody.velocity.y < -0.1f)
-        {
-            state = CharacterState.Fall;
-        }
+        Jump();
+        Fall();
         charCtrl.Animator.SetInteger("State", (int)state);
     }
 

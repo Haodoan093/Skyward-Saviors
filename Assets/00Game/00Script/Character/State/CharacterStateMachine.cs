@@ -29,6 +29,29 @@ public class CharacterStateMachine : StateMachineBehaviour
 
     }
 
+    virtual public void Run()
+    {
+        if (Input.GetAxisRaw("Horizontal") != 0)
+        {
+            state = CharacterState.Run;
+        }
+    }
+
+    virtual public void Jump()
+    {
+        if (Input.GetButtonDown("Jump") && movement.CanJump && movement.OnGround)
+        {
+            movement.Jump(movement.JumpForce);
+            state = CharacterState.Jump;
+        }
+    }
+    virtual public void Fall()
+    {
+        if (movement.Rigidbody.velocity.y < -0.01f)
+        {
+            state = CharacterState.Fall;
+        }
+    }
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
