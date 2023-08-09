@@ -33,5 +33,6 @@ public class CharacterController : MonoBehaviour
         sprite = model.GetComponent<SpriteRenderer>();
         movement = transform.Find("Movement").GetComponent<CharacterMovement>();
         col = GetComponent<CapsuleCollider2D>();
+
     }
 }

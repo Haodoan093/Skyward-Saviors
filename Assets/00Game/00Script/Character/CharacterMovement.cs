@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 4f;
-    [SerializeField] private float jumpForce = 12f;
+    [SerializeField] private float moveSpeed = 3f;
+    [SerializeField] private float jumpForce = 8f;
     [SerializeField] private CharacterController charCtrl;
 
     public Rigidbody2D rb;

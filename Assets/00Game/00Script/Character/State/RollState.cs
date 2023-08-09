@@ -9,7 +9,7 @@ public class RollState : CharacterStateMachine
     override public void OnStateEnter(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, animatorStateInfo, layerIndex);
-        movement.Rigidbody.velocity = new Vector2(7 * movement.Direction, movement.Rigidbody.velocity.y);
+        movement.Rigidbody.velocity = new Vector2(8 * movement.Direction, movement.Rigidbody.velocity.y);
         movement.IsRolling = true;
     }
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
