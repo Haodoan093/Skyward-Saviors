@@ -64,7 +64,7 @@ public class CharacterStateMachine : StateMachineBehaviour
     }
     virtual public void Defend()
     {
-        if (Input.GetAxisRaw("Vertical") == -1)
+        if (Input.GetKey(KeyCode.S))
         {
             state = CharacterState.Defend;
         }

@@ -11,6 +11,7 @@ public class Skill : MonoBehaviour
     public enum SkillState { Ready, Active, Cooldown };
     protected SkillState state = SkillState.Ready;
     protected KeyCode key;
+    
     protected SkillState State { get => state; set => state = value; }
     protected KeyCode Key { get => key; set => key = value; }
     public float CooldownTime { get => cooldownTime; set => cooldownTime = value; }
