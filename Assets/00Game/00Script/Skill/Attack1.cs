@@ -18,9 +18,11 @@ public class Attack1 : Skill
 
     protected override void Use()
     {
+        if (charCtrl.movement.OnGround && charCtrl.movement.Rigidbody.velocity.x != 0) return;
         base.Use();
         charCtrl.Animator.SetTrigger("Attack" + (combo + 1));
         canAttack = true;
+        charCtrl.movement.CanMove = false;
     }
 
     public void StartCombo()
@@ -37,6 +39,7 @@ public class Attack1 : Skill
         canAttack = false;
         combo = 0;
         state = SkillState.Cooldown;
+        charCtrl.movement.CanMove = true;
     }
 
     protected override void OnActive()
