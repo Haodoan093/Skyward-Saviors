@@ -14934,11 +14934,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 166b6310e6f0c9e49b3d0e38b3f9da37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownTime: 1
+  cooldownTime: 0.2
   activeTime: 0
   elapsedCooldownTime: 0
   elapsedActiveTime: 0
   charCtrl: {fileID: 0}
+  combo: 0
   canAttack: 0
 --- !u!1 &2102116720
 GameObject:
